@@ -3,11 +3,14 @@ import React from 'react';
 import './App.css';
 import Demo from './Components/DemoComponent/Demo';
 import DemoClass from './Components/DemoComponent/DemoClass';
-import BaiTapLayout from './Components/BaiTapLayout/BaiTapLayout';
 import DataBinding from './DataBinding/DataBinding';
 import EventBinding from './EventBinding/EventBinding';
 import HandleState from './HandleState/HandleState';
 import BaiTapHandleState from './HandleState/BaiTapHandleState';
+import BaiTapThucHanhLayout from './BaiTapThucHanhLayout/BaiTapThucHanhLayout';
+import BaiTapLayout from './Components/BaiTapLayout/BaiTapLayout';
+import DemoPropsFunction from './Props/DemoPropsFunction/DemoPropsFunction';
+import BTGH from './Props/BaiTapGioHang/BTGH';
 
 function App() {
   return (
@@ -15,7 +18,10 @@ function App() {
       {/* <BaiTapLayout/> */}
       {/* <EventBinding/> */}
       {/* <HandleState/> */}
-      <BaiTapHandleState/>
+      {/* <BaiTapHandleState/> */}
+      {/* <BaiTapThucHanhLayout/> */}
+      {/* <DemoPropsFunction/> */}
+      <BTGH/>
       
     </div>
   );
