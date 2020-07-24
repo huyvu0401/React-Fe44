@@ -43,40 +43,81 @@ export default class BTGH extends Component {
   ];
 
   state = {
-    gioHang: [
-     
-    ]
+    gioHang: [],
+  };
+
+  tangGiamSoLuong = (maSP, tangGiam) => {
+    let gioHangCapNhat = [...this.state.gioHang];
+    let index = gioHangCapNhat.findIndex((spGH) => spGH.maSP === maSP);
+    if (index !== -1) {
+      if (tangGiam) gioHangCapNhat[index].soLuong++;
+      else {
+        if (gioHangCapNhat[index].soLuong > 1) {
+          gioHangCapNhat[index].soLuong--;
+        } else this.xoaGioHang(gioHangCapNhat[index]);
+      }
+    }
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
+  };
+  xoaGioHang = (chosenProduct) => {
+    let spGioHang = {
+      maSP: chosenProduct.maSP,
+      hinhAnh: chosenProduct.hinhAnh,
+      tenSP: chosenProduct.tenSP,
+      soLuong: 1,
+      gia: chosenProduct.giaBan,
+    };
+
+    let gioHangCapNhat = [...this.state.gioHang];
+    let index = gioHangCapNhat.findIndex(
+      (spGH) => spGH.maSP === spGioHang.maSP
+    );
+    if (index !== -1) {
+      gioHangCapNhat.splice(index, 1);
+    }
+    //cap nhat gio hang bang phuong thuc setState
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
   };
 
   themGioHang = (chosenProduct) => {
-      //định nghĩa hàm thay đổi state tại nơi chứa state
-      let spGioHang = {
-          maSP: chosenProduct.maSP,
-          hinhAnh: chosenProduct.hinhAnh,
-          tenSP: chosenProduct.tenSP,
-          soLuong: 1,
-          gia:chosenProduct.giaBan
-      }
-      let gioHangCapNhat = [...this.state.gioHang];
+    //định nghĩa hàm thay đổi state tại nơi chứa state
+    let spGioHang = {
+      maSP: chosenProduct.maSP,
+      hinhAnh: chosenProduct.hinhAnh,
+      tenSP: chosenProduct.tenSP,
+      soLuong: 1,
+      gia: chosenProduct.giaBan,
+    };
+    let gioHangCapNhat = [...this.state.gioHang];
 
-      //ktra sp co trong gio hang hay chua
-      let index = gioHangCapNhat.findIndex(spGH => spGH.maSP === spGioHang.maSP);
-      if(index !== -1){
-          gioHangCapNhat[index].soLuong += 1;
-      }
-      else{
-          gioHangCapNhat.push(spGioHang);
-      }
-      //cap nhat gio hang bang phuong thuc setState
-      this.setState({
-          gioHang: gioHangCapNhat
-      })
-  }
+    //ktra sp co trong gio hang hay chua
+    let index = gioHangCapNhat.findIndex(
+      (spGH) => spGH.maSP === spGioHang.maSP
+    );
+    if (index !== -1) {
+      gioHangCapNhat[index].soLuong += 1;
+    } else {
+      gioHangCapNhat.push(spGioHang);
+    }
+    //cap nhat gio hang bang phuong thuc setState
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
+  };
   render() {
     return (
       <div className="container">
-        <ModalGH gioHang={this.state.gioHang}/>
-        <DSSP prodList={this.arrProduct} themGioHang = {this.themGioHang}/>
+        <ModalGH
+          tinhTongTien={this.tinhTongTien}
+          tangGiamSoLuong={this.tangGiamSoLuong}
+          xoaGioHang={this.xoaGioHang}
+          gioHang={this.state.gioHang}
+        />
+        <DSSP prodList={this.arrProduct} themGioHang={this.themGioHang} />
       </div>
     );
   }
