@@ -57,6 +57,15 @@ class GioHangRedux extends Component {
                    <tbody>
                        {this.renderGioHang()}
                    </tbody>
+                   <tfoot>
+                     <tr>
+                       <td colSpan="5"></td>
+                       <td>Tong tien</td>
+                       <td>{this.props.gioHang.reduce((tongTien, spGH, index)=>{
+                         return tongTien += spGH.soLuong * spGH.gia
+                       },0)}</td>
+                     </tr>
+                   </tfoot>
                </table>
             </div>
         )

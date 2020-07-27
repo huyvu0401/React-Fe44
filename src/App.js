@@ -12,6 +12,7 @@ import BaiTapLayout from './Components/BaiTapLayout/BaiTapLayout';
 import DemoPropsFunction from './Props/DemoPropsFunction/DemoPropsFunction';
 import BTGH from './Props/BaiTapGioHang/BTGH';
 import BaiTapGioHangRedux from './ReduxDemo/BaiTapGioHangRedux/BaiTapGioHangRedux';
+import BaiTapGameBauCua from './ReduxDemo/BaiTapGameBauCua/BaiTapGameBauCua';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       {/* <BaiTapThucHanhLayout/> */}
       {/* <DemoPropsFunction/> */}
       {/* <BTGH/> */}
-      <BaiTapGioHangRedux/>
+      {/* <BaiTapGioHangRedux/> */}
+      <BaiTapGameBauCua/>
       
     </div>
   );
