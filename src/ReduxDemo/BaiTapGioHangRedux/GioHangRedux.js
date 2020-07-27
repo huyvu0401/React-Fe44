@@ -28,7 +28,7 @@ class GioHangRedux extends Component {
                 <button
                   className="btn btn-danger"
                   onClick={() => {
-                    this.props.xoaGioHang(sanPhamGH);
+                    this.props.xoaGioHang(sanPhamGH.maSP);
                   }}
                 >
                   Xoa
@@ -68,4 +68,27 @@ const mapStateToProps = (state) => {
         gioHang: state.GioHangReducer.stateGioHang
     }
 }
-export default connect(mapStateToProps)(GioHangRedux)
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    xoaGioHang: (maSP) => {
+      console.log(maSP)
+      let action = {
+        type: 'XOA_GIO_HANG',
+        maSP: maSP
+      }
+      //dung ham dispatch cua redux dua du lieu len reducer
+      dispatch(action)
+    },
+    tangGiamSoLuong: (maSP, tangGiam) => {
+      let action = {
+        type: 'TANG_GIAM',
+        maSP,
+        tangGiam
+      }
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux)

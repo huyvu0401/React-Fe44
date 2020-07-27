@@ -7,8 +7,11 @@ import * as serviceWorker from "./serviceWorker";
 //cai dat redux
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from './Redux/reducers/rootReducer'
-const reduxStore = createStore(rootReducer)
+import rootReducer from "./Redux/reducers/rootReducer";
+const reduxStore = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 ReactDOM.render(
   <Provider store={reduxStore}>
     <App />
