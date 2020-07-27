@@ -24,9 +24,11 @@ const BaiTapGioHangReducer = (state = stateDefault, action) => {
       } else {
         gioHangCapNhat.push(action.spGH);
       }
+      state.stateGioHang = gioHangCapNhat;
+      return{...state}
     }
     default:
-      return { ...state, stateGioHang: gioHangCapNhat };
+      return { ...state};
   }
 };
 export default BaiTapGioHangReducer;
